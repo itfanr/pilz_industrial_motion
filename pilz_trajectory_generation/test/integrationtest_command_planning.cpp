@@ -472,7 +472,7 @@ TEST_F(IntegrationTestCommandPlanning, CIRCJointGoal)
   moveit_msgs::GetMotionPlan srv;
   srv.request.motion_plan_request = req;
 
-  ros::service::waitForService(PLAN_SERVICE_NAME, ros::Duration(10));
+  ASSERT_TRUE(ros::service::waitForService(PLAN_SERVICE_NAME, ros::Duration(10))) << "Service not available!";
   ros::ServiceClient client = node_handle.serviceClient<moveit_msgs::GetMotionPlan>(PLAN_SERVICE_NAME);
 
   // Call the service client
@@ -561,7 +561,7 @@ TEST_F(IntegrationTestCommandPlanning, CIRCPoseGoal)
   moveit_msgs::GetMotionPlan srv;
   srv.request.motion_plan_request = req;
 
-  ros::service::waitForService(PLAN_SERVICE_NAME, ros::Duration(10));
+  ASSERT_TRUE(ros::service::waitForService(PLAN_SERVICE_NAME, ros::Duration(10))) << "Service not available!";
   ros::ServiceClient client = node_handle.serviceClient<moveit_msgs::GetMotionPlan>(PLAN_SERVICE_NAME);
 
   // Call the service client
